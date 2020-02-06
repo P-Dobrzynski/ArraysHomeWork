@@ -8,12 +8,18 @@ public class Main {
 	   int[] testArray = {20,4,1,70,1,4,100,66,4,88,5,1,99,4};
 	   int[] testArray2 = {1,2,3,4,5,6,7,8,9};
 	    minAndMaxHomework(testArray);
+	    minAndMax2(testArray);
 
 	    reverseArrayHomework(testArray2);
         System.out.println(Arrays.toString(testArray2));
+        int[] testArray22= {1,2,3,4,5,6,7,8,9};
+        reverseArray2(testArray22);
+        System.out.println(Arrays.toString(testArray22));
+
         int[] testArray3 = {1,2,3};
         int[] testArray4 = {4,5,6};
         System.out.println(Arrays.toString(joinTwoArrays(testArray3, testArray4)));
+        System.out.println(Arrays.toString(joinTwoArrays2(testArray3, testArray4)));
         System.out.println("the most frequent element in an array is: " +mostFrequentElement(testArray));
         int[] testArray5 = {1,4,6,7};
         int[] testArray6 = {2,3,8};
@@ -31,11 +37,11 @@ public class Main {
     public static int[] sortArray(int[]array){
         for (int i = 0; i < array.length; i++) {
             for (int j = i + 1; j < array.length; j++) {
-                int tmp = 0;
+                int temp;
                 if (array[i] > array[j]) {
-                    tmp = array[i];
+                    temp = array[i];
                     array[i] = array[j];
-                    array[j] = tmp;
+                    array[j] = temp;
 
                 }
             }
@@ -82,6 +88,19 @@ public class Main {
         return joinedArrays;
     }
 
+    public static int[] joinTwoArrays2(int[] a1, int[] a2) {
+        int[] joinedArray = new int[a1.length+a2.length];
+        for(int i = 0; i<joinedArray.length; i++) {
+            if (i < a1.length) {
+                joinedArray[i]=a1[i];
+            }
+            if (i >= a1.length ) {
+                joinedArray[i]=a2[i-a1.length];
+            }
+        }
+        return joinedArray;
+    }
+
     private  static void minAndMaxHomework(int[] array) {
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
@@ -96,6 +115,16 @@ public class Main {
         System.out.println("minimum value in the array is: " + min + " and maximum is: " + max);
     }
 
+    public static void minAndMax2(int[] array) {
+        int min=Integer.MAX_VALUE;
+        int max=Integer.MIN_VALUE;
+        for (int i=0; i < array.length; i++) {
+            if (array[i] < min) min=array[i];
+            if (array[i] > max) max=array[i];
+        }
+        System.out.println("minimum value in the array is: " + min + " and maximum is: " + max);
+    }
+
     private static int[] reverseArrayHomework(int[] array){
        int maxIndex = array.length-1;
        for(int i = 0; i<array.length/2; i++){
@@ -104,6 +133,14 @@ public class Main {
             array[maxIndex -i] = temp;
 
             }
+        return array;
+    }
+    public static int[] reverseArray2 ( int [] array) {
+        for(int i = 0; i < array.length / 2; i++) {
+            int temp = array[i];
+            array[i] = array[(array.length-1)-i];
+            array[(array.length-1)-i] = temp;
+        }
         return array;
     }
 
